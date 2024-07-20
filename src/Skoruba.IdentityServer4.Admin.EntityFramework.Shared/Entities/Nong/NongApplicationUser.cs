@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System;
 using Newtonsoft.Json;
+using System;
+using Skoruba.IdentityServer4.Admin.EntityFramework.Shared.Entities.Identity;
 
-namespace Skoruba.IdentityServer4.Admin.EntityFramework.Shared.Entities.Identity
+namespace Skoruba.IdentityServer4.Admin.EntityFramework.Shared.Entities.Nong
 {
-	public class UserIdentity : IdentityUser
-	{
+    public class NongApplicationUser 
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; } = 0;
         [Required]
         [StringLength(20)]
         public string UserCode { get; set; } = string.Empty;
@@ -41,11 +46,5 @@ namespace Skoruba.IdentityServer4.Admin.EntityFramework.Shared.Entities.Identity
         public int Tag { get; set; } = 0;
         [Required]
         public DateTime CreateTime { get; set; } = DateTime.Now;
-
-        public long Manager {  get; set; } = 0;
-
-        public int Level { get; set; } = 0; 
-
-        public int Status { get; set; } = 0;
     }
 }
